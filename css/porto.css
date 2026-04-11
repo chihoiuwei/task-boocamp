@@ -1,0 +1,155 @@
+header {
+    background-color: rgb(140, 136, 137);
+    padding: 20px;
+    font-size: 20px;
+    color: black;
+    margin: -10px;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.nav button {
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  cursor: pointer;
+  font-family: IM FELL Great Primer;
+}
+
+.gambar img {
+    width: 430px;
+    height: 600px;
+    border-radius: 250px;
+}
+
+.gambar{
+    justify-content: center;
+    display: flex;
+    margin-top: 50px;
+}
+
+body {
+    background-color: rgba(196, 191, 193, 0.467);
+}
+
+.nama {
+    font-family: Inclusive Sans;
+    font-size: 100px;
+    display: flex;
+    margin-left: 375px;
+    margin-top: -650px;
+    text-shadow: 20px;
+}
+
+.nama p {
+    text-shadow: 2px 2px  2px rgb(140, 136, 137);
+}
+
+.pengalaman {
+    background: rgba(238, 218, 173, 0.722);
+    width: 20%;
+    padding: 30px;
+    padding-left: 5px;
+    padding-right: 60px;
+    margin-left: 180px;
+    margin-top: -70px;
+    font-family: sans-serif;
+}
+
+.pengalaman h3 {
+    display: flex;
+    padding-left: 25px;
+}
+
+.pengalaman ul {
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+.penjelasan {
+    background: rgb(138, 113, 81);
+    width: 15%;
+    padding: 10px;
+    margin-left: 860px;
+    margin-top: -400px;
+    border-radius: 20px;
+}
+
+.penjelasan p {
+    text-align:left;
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+    font-family:sans-serif;
+    padding-left: 50px;
+}
+
+.deskripsi {
+    background: rgb(145, 142, 140);
+    width: 15%;
+    padding: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 70px;
+    margin-left: 870px;
+    margin-top:40px;
+}
+
+.deskripsi p {
+    display: flex;
+    font-size: 17px;
+    font-family:sans-serif;
+}
+
+
+@media (max-width: 600px){
+    .gambar img {
+        margin-top: 60px;
+    }
+
+    .nama {
+        font-size: 80px;
+        margin-top: -700px;
+        margin-left: 80px;
+    }
+
+    .pengalaman {
+        width: 40%;
+        padding: 30px;
+        padding-left: 5px;
+        padding-right: 60px;
+        margin-left: 50px;
+        margin-top: 500px;
+    }
+
+    .penjelasan {
+        width: 40%;
+        margin-left: 310px;
+        margin-top: -500px;
+        z-index: 1000;
+        position: relative;
+    }
+
+    .penjelasan p {
+        font-size: 25px;
+        text-align:center;
+        padding-left: 0px;
+    }
+
+    .deskripsi {
+        width: 40%;
+        margin-left: 220px;
+        margin-top:400px;
+        padding-left: 40px;
+    }
+
+    .deskripsi p {
+        font-size: 20px;
+    }
+}
+
