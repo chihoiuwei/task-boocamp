@@ -130,18 +130,18 @@
                     <div class="mb-3">
                         <label class="form-label">Choose Product</label>
 
-                        <select name="nama_produk" class="form-select">
-                            <option value="">Choose Product</option>
-                            <option>Sofa</option>
-                            <option>Table</option>
-                            <option>Chair</option>
-                            <option>Lamp</option>
+                        <select name="nama_produk" class="form-select" required>
+                            <option value="">Choose Product </option>
+                            <option>Sofa </option>
+                            <option>Table </option>
+                            <option>Chair </option>
+                            <option>Lamp </option>
                         </select>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Quantity</label>
-                        <input type="number" name="jumlah" class="form-control" min="1">
+                        <input type="number" name="jumlah" class="form-control" min="1" required>
                     </div>
 
                     <div class="text-center">
