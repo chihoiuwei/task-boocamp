@@ -1,0 +1,285 @@
+<?php
+
+include '../php/koneksi.php';
+
+$query = mysqli_query(
+    $conn,
+    "SELECT * FROM products"
+);
+
+?>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>E-Commerce Sederhana</title>
+
+  <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+  <style>
+    .navbar-brand img {
+      width: 150px;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-white bg-white">
+    <div class="container">
+      <!-- Logo + Nama -->
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="../img/Frame 168.png" alt="Logo"  class="img-fluid">
+      </a>
+
+      <!-- Button Mobile -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menu -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link active" href="#home" >Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#shop">Shop</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact</a>
+            </li>
+
+             <li class="nav-item">
+                <a class="nav-link" href="cart.php">Cart</a>
+            </li>
+        </ul>
+      </div>
+  </div>
+  </nav>
+
+  <section id="home">
+  <div class="hero-wrapper">
+    <img src="../img/scandinavian-interior-mockup-wall-decal-background 1.png"
+         alt="Home Image"
+         class="hero-image">
+
+    <div class="hero-content">
+      <div class="hero-box">
+        <small>New Arrival</small>
+        <h1>
+          Discover Our <br>
+          New Collection
+        </h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
+        <a href="#shop" class="btn btn-lg buy-btn" style="background-color: #B88E2F; color: white;">
+          BUY NOW
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section id="shop" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Shop Our Collection</h2>
+    <section class="text-center mb-4">
+      <button class="btn btn-outline-dark filter-btn"
+        data-filter="all">
+        All
+      </button>
+      <button class="btn btn-outline-dark filter-btn"
+        data-filter="chair">
+        Chair
+      </button>
+      <button class="btn btn-outline-dark filter-btn"
+        data-filter="sofa">
+        Sofa
+      </button>
+      <button class="btn btn-outline-dark filter-btn"
+        data-filter="table">
+        Table
+      </button>
+       <button class="btn btn-outline-dark filter-btn"
+        data-filter="lamp">
+        Lamp
+      </button>
+    </section>  
+        <div class="row g-4" id="product-container"></div>
+    </div>
+  </section>
+
+  <section id="cart" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+
+                <h2 class="text-center mb-4">Add to Cart</h2>
+
+                <form action="../php/orders.php" method="POST">
+
+                    <div class="mb-3">
+                        <label class="form-label">Choose Product</label>
+
+                        <select name="product_id" class="form-select" required>
+
+                              <option value="">
+                                  Choose Product
+                              </option>
+
+                              <?php while($row = mysqli_fetch_assoc($query)) { ?>
+
+                                  <option value="<?= $row['id'] ?>">
+                                      <?= $row['nama_produk'] ?>
+                                  </option>
+
+                              <?php } ?>
+
+                          </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Quantity</label>
+                        <input type="number" name="jumlah" class="form-control" min="1" required>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-warning">
+                            Add to Cart
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  
+
+  <section id="about" style="margin-bottom: 80px; margin-top: 80px;">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">About Us</h2>
+
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner rounded-4">
+                    <div class="carousel-item active">
+                        <div class="row align-items-center" style="background-color: #FCF8F3;">
+                        <div class = "col-md-5">
+                            <img src="../img/Rectangle 24.png" class="img-fluid w-60" alt="Slide 1">
+                        </div>
+                        <div class = "col-md-7 p-5">
+                            <h3>Project 1</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>  
+                        </div> 
+                        </div>
+                    </div>    
+
+                    <div class="carousel-item">
+                        <div class="row align-items-center" style="background-color: #FCF8F3;">
+                        <div class = "col-md-5">
+                            <img src="../img/Rectangle 25.png" class="img-fluid" alt="Slide 2">
+                        </div>
+                        <div class = "col-md-7 p-5">
+                            <h3>Project 2</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>  
+                        </div> 
+                        </div>
+                    </div>
+            
+                    <div class="carousel-item">
+                        <div class="row align-items-center" style="background-color: #FCF8F3;">
+                        <div class = "col-md-5">
+                            <img src="../img/Rectangle 40.png" class="img-fluid" alt="Slide 3">
+                        </div>
+                        <div class = "col-md-7 p-5">
+                            <h3>Project 3</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>  
+                        </div> 
+                        </div>
+                    </div>
+                </div>
+
+                <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselExample"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+
+                <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselExample"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+  </section>
+
+    <section id="contact" style="margin-bottom: 80px;">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Contact</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="4" placeholder="Enter your message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="background-color: #FD6F00;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>  
+
+  <script src="../js/script.js"></script>
+
+  <section class="footer bg-dark text-white text-center py-3">
+    <div class="container">
+      <p class="mb-0">&copy; 2026 E-Commerce Sederhana. All rights reserved.</p>
+    </div>
+  </section>
+
+</body>
+</html>
