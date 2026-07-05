@@ -4,12 +4,20 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 
+// Home page (single-page with all sections)
 Route::get('/', function () {
-    return "Home";
-});
+    $products = \App\Models\Product::all();
+    return view('home', compact('products'));
+})->name('home');
 
-Route::get('/products', [ProductController::class, 'index']);
+// Products
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/api/products', [ProductController::class, 'getProducts'])->name('products.api');
 
-Route::get('/cart', [OrderController::class, 'index']);
+// Cart
+Route::get('/cart', [OrderController::class, 'index'])->name('cart.index');
+Route::post('/cart', [OrderController::class, 'store'])->name('cart.store');
+Route::delete('/cart/{id}', [OrderController::class, 'destroy'])->name('cart.destroy');
 
-Route::get('/checkout', [OrderController::class, 'checkout']);
+// Checkout
+Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
