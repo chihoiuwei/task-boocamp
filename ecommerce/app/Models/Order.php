@@ -13,4 +13,12 @@ class Order extends Model
         'product_id',
         'quantity'
     ];
+
+    /**
+     * Get the product that this order belongs to.
+     */
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
