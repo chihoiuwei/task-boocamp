@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 
-// Home page (single-page with all sections)
 Route::get('/', function () {
     $products = \App\Models\Product::all();
     return view('home', compact('products'));
@@ -21,3 +21,16 @@ Route::delete('/cart/{id}', [OrderController::class, 'destroy'])->name('cart.des
 
 // Checkout
 Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

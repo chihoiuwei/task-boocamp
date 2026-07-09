@@ -1,3 +1,8 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
 /* Fonts */
 body {
     font-family: 'Poppins', sans-serif;
@@ -13,12 +18,12 @@ body {
     background-color: #B88E2F !important;
 }
 
-.btn-primary-custom {
+.btn.btn-primary-custom {
     background-color: #B88E2F;
     border-color: #B88E2F;
 }
 
-.btn-primary-custom:hover {
+.btn.btn-primary-custom:hover {
     background-color: #A37E2A;
     border-color: #A37E2A;
 }
@@ -216,3 +221,9 @@ body {
         justify-content: center !important;
     }
 }
+
+/* Memperbaiki konflik Tailwind vs Bootstrap untuk navbar */
+.navbar-collapse.collapse {
+    visibility: visible;
+}
+

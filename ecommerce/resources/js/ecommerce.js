@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", function () {
+function initApp() {
+    console.log("ecommerce.js loaded");
     // ---- Navbar Scroll Effect ----
     const navbar = document.getElementById("mainNavbar");
     if (navbar) {
@@ -158,4 +159,10 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", initApp);
+} else {
+    initApp();
+}
